@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: handou-provider-article
+  cloud:
+    nacos:
+      discovery:
+        server-addr: nacos.huazai.vip
+        group: handoublog
+      config:
+        server-addr: nacos.huazai.vip
+        file-extension: yml
+        refresh-enabled: true
+        group: handoublog
+        extension-configs:
+          - data-id: handou-mysql.yml
+            group: handoublog
+            refresh: true
+          - data-id: handou-redis.yml
+            group: handoublog
+            refresh: true
+          - data-id: handou-aliyun.yml
+            group: handoublog
+            refresh: true
+          - data-id: handou-devtools.yml
+            group: handoublog
+            refresh: true
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: localhost:8080
